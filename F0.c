@@ -4,18 +4,31 @@
 #include <conio.h>
 #include <windows.h>
 
-void printT();            //Imprime o tabuleiro 
+void printT();            //Imprime o tabuleiro
 void moveP1(int m[4][4]); //Move o primeiro jogador (a raposa)
 void moveP2(int m[4][4]); //Move o segundo jogador (o ganso)
-void actF();              //Ação do primeiro jogador (a raposa)
-void actG();              //Ação do segundo jogador (o ganso)
+void actF();              //Aï¿½ï¿½o do primeiro jogador (a raposa)
+void actG();              //Aï¿½ï¿½o do segundo jogador (o ganso)
+
+fasfsafsa
+fas
+fsa
+f
+a
+fsa
+f
+saf
+a
+f
+
+
 
 int i, j, r = 0, x = 2, y = 3, w = 0, p = 0, g = 0, xo, yo, q = 0;
 char n[7][7], s;
-	
+
 int main () {
 	int m[4][4], x1, y1;
-	
+
 	//Construindo o tabuleiro:
 	for (i = 0; i <= 6; i++) {
 		for (j = 0; j <= 6; j++) {
@@ -25,12 +38,12 @@ int main () {
 	n[2][0] = 'A'; n[2][3] = 'Z'; n[2][6] = 'K'; n[3][0] = 'B'; n[3][6] = 'J'; n[4][0] = 'C'; n[4][1] = 'D'; n[4][2] = 'E';
     n[4][3] = 'F'; n[4][4] = 'G'; n[4][5] = 'H'; n[4][6] = 'I'; n[5][2] = 'L'; n[5][3] = 'M'; n[5][4] = 'N'; n[6][2] = 'O';
     n[6][3] = 'P'; n[6][4] = 'Q';
-	    
+
 	printT();
 
-    //Inio do jogo.
+    //Inicio do jogo.
 	while(!GetAsyncKeyState(VK_ESCAPE) && w == 0) {
-		
+
 		m[0][0] = GetAsyncKeyState(0x64);
 		m[0][1] = GetAsyncKeyState(0x66);
 		m[0][2] = GetAsyncKeyState(0x62);
@@ -47,18 +60,18 @@ int main () {
 		m[3][1] = GetAsyncKeyState(0x43);
 		m[3][2] = GetAsyncKeyState(0x51);
 		m[3][3] = GetAsyncKeyState(0x45);
-		
+
 		if (q == 0) moveP1(m);
 		if (q == 0) actF();
 		if (q == 1) moveP2(m);
-	    if (q == 1) actG();
-	    
+      if (q == 1) actG();
+
         for (i = 0; i <= 4; i++) {
 		    for (j = 0; j <= 4; j++) {
 			    m[i][j] = 0;
 		    }
 	    }
-        
+
         //Verifica se alguem ganhou:
         for (i = 0; i <= 6; i++) {
 			for (j = 0; j <= 6; j++) {
@@ -67,7 +80,7 @@ int main () {
 		}
 		if (g <= 5) w = 1;
 		else g = 0;
-		
+
         /*for (i = 0; i <= 6; i++) {
 			for (j = 0; j <= 6; j++) {
 			    if (n[i][j] == 'Z') {
@@ -76,12 +89,12 @@ int main () {
 			    }
 			}
 		}
-		
+
 		if (n[x1-1][y1-1] != '.' && n[x1-1][y1] != '.' && n[x1-1][y1+1] != '.' && n[x1][y1-1] != '.') {
 			if (n[x1][y1+1] != '.' && n[x1+1][y1+1] != '.' && n[x1+1][y1] != '.' && n[x1+1][y1+1] != '.') w = 2;
 		}*/
     } //Fim do jogo.
-    
+
     //Verificando quem ganhou:
 	if (w == 1) {
 		system("color 0a");
@@ -98,7 +111,7 @@ int main () {
 void printT() { //Imprime o tabuleiro
 	system("color 0c");
 	system("clear||cls");
-	
+
 	//Primeira parte do tabuleiro:
 	for (i = 0; i <= 1; i++) {
 		printf("        ");
@@ -112,7 +125,7 @@ void printT() { //Imprime o tabuleiro
 		if (i == 0) printf("| \\ | / | \n");
 		if (i == 1) printf("| / | \\ | \n");
 	}
-	     
+
     //Segunda parte do tabuleiro:
 	for (i = 2; i <= 4; i++) {
 		for (j = 0; j <= 6; j++) {
@@ -124,7 +137,7 @@ void printT() { //Imprime o tabuleiro
 		if (i == 2) printf(" | \\ | / | \\ | / | \\ | / |\n");
 		if (i == 3) printf(" | / | \\ | / | \\ | / | \\ |\n");
 	}
-	
+
 	//Terceira parte do tabuleiro:
 	for (i = 5; i <= 6; i++) {
 		printf("         ");
@@ -152,7 +165,7 @@ void moveP1(int m[4][4]) { //Move o primeiro jogador (a raposa)
 	}
 	if (x != 2 || y != 0 && y != 1 && y != 5 && y != 6) { //Cima
 		if (m[0][3] != 0 && x > 0) { x--; printT(); }
-	}	
+	}
 	if ((x + y)%2 == 0) {
 		if (x != 4 || y != 0 && y != 1 && y != 2 && y != 5 && y != 6) { //Baixo-Esquerda
 		    if (y != 2 || x != 0 && x != 1 && x != 5 && x != 6) {
@@ -160,7 +173,7 @@ void moveP1(int m[4][4]) { //Move o primeiro jogador (a raposa)
 		    }
 	    }
 	    if (x != 4 || y != 0 && y != 1 && y != 4 && y != 5 && y != 6) { //Baixo-Direita
-		    if (y != 4 || x != 0 && x != 1 && x != 5 && x != 6) { 
+		    if (y != 4 || x != 0 && x != 1 && x != 5 && x != 6) {
 		        if (m[1][1] != 0 && x < 6 && y < 6) { x++; y++; printT(); }
 		    }
 	    }
@@ -190,14 +203,14 @@ void moveP2(int m[4][4]) { //Move o segundo jogador (o ganso)
 	if (x != 2 || y != 0 && y != 1 && y != 5 && y != 6) { //Cima
 		if (m[2][3] != 0 && x > 0) { x--; printT(); }
 	}
-	if ((x + y)%2 == 0) {	
+	if ((x + y)%2 == 0) {
 	    if (x != 4 || y != 0 && y != 1 && y != 2 && y != 5 && y != 6) { //Baixo-Esquerda
 		    if (y != 2 || x != 0 && x != 1 && x != 5 && x != 6) {
 		        if (m[3][0] != 0 && x < 6 && y > 0) { x++; y--; printT(); }
 		    }
 	    }
 	    if (x != 4 || y != 0 && y != 1 && y != 4 && y != 5 && y != 6) { //Baixo-Direita
-		    if (y != 4 || x != 0 && x != 1 && x != 5 && x != 6) { 
+		    if (y != 4 || x != 0 && x != 1 && x != 5 && x != 6) {
 		        if (m[3][1] != 0 && x < 6 && y < 6) { x++; y++; printT(); }
 		    }
 	    }
@@ -214,7 +227,7 @@ void moveP2(int m[4][4]) { //Move o segundo jogador (o ganso)
     }
 }
 
-void actF() { //Ação do primeiro jogador (a raposa)
+void actF() { //Aï¿½ï¿½o do primeiro jogador (a raposa)
 	if (GetAsyncKeyState(VK_SPACE) != 0 && p == 0 && n[x][y] == 'Z') {
 		s = n[x][y];
 		xo = x;
@@ -223,17 +236,17 @@ void actF() { //Ação do primeiro jogador (a raposa)
 		printT();
 	}
 	if (GetAsyncKeyState(VK_SPACE) != 0 && p == 1 && n[x][y] == '.') {
-		//if(x >= xo - 1 && x <= xo + 1 && y >= yo - 1 && y <= yo + 1) {	
+		//if(x >= xo - 1 && x <= xo + 1 && y >= yo - 1 && y <= yo + 1) {
 		   n[x][y] = s;
 		   n[xo][yo] = '.';
 		   p = 0;
 		   printT();
 		   q = 1;
 		//}
-    }	
+    }
 }
 
-void actG() { //Ação do segundo jogador (o ganso)
+void actG() { //Aï¿½ï¿½o do segundo jogador (o ganso)
 	if (GetAsyncKeyState(VK_SPACE) != 0 && p == 0 && n[x][y] != '.' && n[x][y] != 'Z') {
 		s = n[x][y];
 		xo = x;
